@@ -1,112 +1,72 @@
+# Overview
+In the past decade, the blockchain has evolved from a geek concept that exists only in small circles to a concept that is widely understood and accepted by the public. Blockchain technology has also experienced several stages in this period of time:
 
-# EOSIO - The Most Powerful Infrastructure for Decentralized Applications
+1. The blockchain represented by Bitcoin can be summarized as the first generation. The main feature of its function is to support the decentralized token payment system. The `Proof of Work` is the core consensus mechanism, and the speed of transaction confirmation is tens of minutes.
 
-[![Build status](https://badge.buildkite.com/370fe5c79410f7d695e4e34c500b4e86e3ac021c6b1f739e20.svg?branch=master)](https://buildkite.com/EOSIO/eosio)
+2. Blockchain represented by Ethereum can be called the second generation. Its main feature is to support `Turing-Complete` smart contract system. The speed of transaction confirmation is minutes which is improved compared with the previous generation.
 
-Welcome to the EOSIO source code repository! This software enables businesses to rapidly build and deploy high-performance and high-security blockchain-based applications.
+3. EOS represents the third-generation blockchain technology. By improving the consensus mechanism (`Proof of Stake`) and enhancing scalability, the confirmation speed and throughput efficiency of blockchain transactions are greatly improved.
 
-Some of the groundbreaking features of EOSIO include:
 
-1. Free Rate Limited Transactions
-1. Low Latency Block confirmation (0.5 seconds)
-1. Low-overhead Byzantine Fault Tolerant Finality
-1. Designed for optional high-overhead, low-latency BFT finality
-1. Smart contract platform powered by WebAssembly
-1. Designed for Sparse Header Light Client Validation
-1. Scheduled Recurring Transactions
-1. Time Delay Security
-1. Hierarchical Role Based Permissions
-1. Support for Biometric Hardware Secured Keys (e.g. Apple Secure Enclave)
-1. Designed for Parallel Execution of Context Free Validation Logic
-1. Designed for Inter Blockchain Communication
+Based on the third-generation EOS, HOT builds the underlying system, inherits all the technical advantages of EOS, and makes improvements to HOT applications.
 
-EOSIO is released under the open source MIT license and is offered “AS IS” without warranty of any kind, express or implied. Any security provided by the EOSIO software depends in part on how it is used, configured, and deployed. EOSIO is built upon many third-party libraries such as WABT (Apache License) and WAVM (BSD 3-clause) which are also provided “AS IS” without warranty of any kind. Without limiting the generality of the foregoing, Block.one makes no representation or guarantee that EOSIO or any third-party libraries will perform as intended or will be free of errors, bugs or faulty code. Both may fail in large or small ways that could completely or partially limit functionality or compromise computer systems. If you use or implement EOSIO, you do so at your own risk. In no event will Block.one be liable to any party for any damages whatsoever, even if it had been advised of the possibility of damage.  
+## Technical Features
 
-Block.one is neither launching nor operating any initial public blockchains based upon the EOSIO software. This release refers only to version 1.0 of our open source software. We caution those who wish to use blockchains built on EOSIO to carefully vet the companies and organizations launching blockchains based on EOSIO before disclosing any private keys to their derivative software.
+### C++/WASM Virtual Machine
 
-There is no public testnet running currently.
+HOT builds the underlying system based on EOSIO, and makes improvements according to the bussiness characteristics of HOT.
 
----
+For EOSIO, it uses C++ as the smart contract programming language. Given C++ is a popular programming language among developers around the world, any developer who is familiar with C++ is not required to learn a new programming language to pick up EOSIO’s APIs, which will be covered in this onboarding series. Once familiarity with EOSIO’s APIs has been achieved, a developer will be able to program EOSIO smart contracts using canonical C++ code constructs.
 
-**If you used our build scripts to install eosio, [please be sure to uninstall](#build-script-uninstall) before using our packages.**
+On top of EOSIO core layer, a WebAssembly (WASM) virtual machine executes smart contract code. The design choice of using WASM enables HOT to re-use optimized and battle-tested compilers and toolchains which are being maintained and improved by a broader community.
 
----
+### High Throughput and Scalability
 
-#### Mac OS X Brew Install
-```sh
-$ brew tap eosio/eosio
-$ brew install eosio
-```
-#### Mac OS X Brew Uninstall
-```sh
-$ brew remove eosio
-```
+HOT is designed for achieving high transaction throughputs. Using the consensus mechanism of Delegated Proof of Stake (DPOS), an HOT blockchain network does not need to wait for all nodes to complete a transaction to achieve finality. This enables much higher transaction throughput when compared to other consensus mechanisms.
 
-#### Ubuntu 18.04 Package Install
-```sh
-$ wget https://github.com/eosio/eos/releases/download/v1.8.2/eosio_1.8.2-1-ubuntu-18.04_amd64.deb
-$ sudo apt install ./eosio_1.8.2-1-ubuntu-18.04_amd64.deb
-```
-#### Ubuntu 16.04 Package Install
-```sh
-$ wget https://github.com/eosio/eos/releases/download/v1.8.2/eosio_1.8.2-1-ubuntu-16.04_amd64.deb
-$ sudo apt install ./eosio_1.8.2-1-ubuntu-16.04_amd64.deb
-```
-#### Ubuntu Package Uninstall
-```sh
-$ sudo apt remove eosio
-```
-#### Centos RPM Package Install
-```sh
-$ wget https://github.com/eosio/eos/releases/download/v1.8.2/eosio-1.8.2-1.el7.x86_64.rpm
-$ sudo yum install ./eosio-1.8.2-1.el7.x86_64.rpm
-```
-#### Centos RPM Package Uninstall
-```sh
-$ sudo yum remove eosio
-```
+### Faster Confirmations and Lower Latency
 
-#### Build Script Uninstall
+To facilitate good user experience, HOT is designed to have low latency for transaction confirmation so that applications built by developers can compete with non-blockchain, centralized, alternatives.
 
-If you have previously installed EOSIO using build scripts, you can execute `eosio_uninstall.sh` to uninstall.
-- Passing `-y` will answer yes to all prompts (does not remove data directories)
-- Passing `-f` will remove data directories (be very careful with this)
-- Passing in `-i` allows you to specify where your eosio installation is located
+### Feeless and Cost Predictable Blockchain
 
-## Supported Operating Systems
-EOSIO currently supports the following operating systems:  
-1. Amazon Linux 2
-2. CentOS 7
-3. Ubuntu 16.04
-4. Ubuntu 18.04
-5. MacOS 10.14 (Mojave)
+Applications built on HOT can adopt a freemium model in which users are not required to pay for the cost of infrastructure. A user does not have to pay a fee to transact. HOT blockchains are unique in that the infrastructure resource is regulated by a staking mechanism. Infrastructure resource is based on token staked in ratio to the total available resource and is fixed once tokens have been staked. 
 
-## Resources
-1. [Website](https://eos.io)
-1. [Blog](https://medium.com/eosio)
-1. [Developer Portal](https://developers.eos.io)
-1. [StackExchange for Q&A](https://eosio.stackexchange.com/)
-1. [Community Telegram Group](https://t.me/EOSProject)
-1. [Developer Telegram Group](https://t.me/joinchat/EaEnSUPktgfoI-XPfMYtcQ)
-1. [White Paper](https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md)
-1. [Roadmap](https://github.com/EOSIO/Documentation/blob/master/Roadmap.md)
+### Comprehensive Permission Schema
 
-<a name="gettingstarted"></a>
-## Getting Started
-Instructions detailing the process of getting the software, building it, running a simple test network that produces blocks, account creation and uploading a sample contract to the blockchain can be found in [Getting Started](https://developers.eos.io/eosio-home/docs) on the [EOSIO Developer Portal](https://developers.eos.io).
+HOT has a comprehensive permission system for creating custom permission schema for various use cases. This comprehensive permission system allows developers to build a permissioned application on top of a flexible infrastructure without having to reinvent the wheel.
 
-## Contributing
+### Upgradability
 
-[Contributing Guide](./CONTRIBUTING.md)
+Applications deployed on HOT based blockchains are upgradeable. This means developers can deploy code fix, add features, and/or change application logic, as long as sufficient authority is provided. As a developer, you can iterate your application without the risk of being locked-in to a mistake or bug permanently. It is also possible, however, to deploy smart contracts that cannot be modified on HOT based blockchains. These decisions are at the discretion of developers rather than restricted by the protocol.
 
-[Code of Conduct](./CONTRIBUTING.md#conduct)
+### Less energy consumption
 
-## License
+With DPOS as the consensus mechanism, HOT consumes much less energy to validate transactions and secure a blockchain compared to other consensus algorithms
 
-[MIT](./LICENSE)
+### Programmable Economics and Governance
 
-## Important
+The resource allocation and governance mechanism of any HOT based blockchain are programmable via smart contracts. Developers only need to modify the system smart contracts to change resource allocation and governance rules of an HOT blockchain. 
 
-See [LICENSE](./LICENSE) for copyright and license terms.
+### HOT, Rooted in the system contract
 
-All repositories and other materials are provided subject to the terms of this [IMPORTANT](./IMPORTANT.md) notice and you must familiarize yourself with its terms.  The notice contains important information, limitations and restrictions relating to our software, publications, trademarks, third-party resources, and forward-looking statements.  By accessing any of our repositories and other materials, you accept and agree to the terms of the notice.
+The issuance of HOT tokens is achieved through system contract, which is ensuring openness and fairness. All logical changes at the system contract level need to be completed based on HOT's governance mechanism to ensure the transparency and democracy of system.
+
+## Stack
+
+<img src="https://github.com/houseoftokens/wiki/blob/master/assets/images/arch.png?raw=true" style="width:600px;" alt="A typical interaction with the HOT blockchain.">
+
+### Smart Contract/CDT
+
+HOT.CDT is a toolchain for WebAssembly (WASM) and set of tools to facilitate contract writing for the HOT platform. In addition to being a general purpose WebAssembly toolchain, HOT specific optimizations are available to support building HOT smart contracts. This new toolchain is built around Clang 7, which means that HOT.CDT has the most current optimizations and analyses from LLVM. However, as the WASM target is still considered experimental, some optimizations are not available or incomplete.
+
+### NodeHot
+
+NodeHot is the core HOT node daemon. Plugins can be used to configure NodeHot to execute with various features. NodeHot handles all peer-to-peer networking, contract code scheduling, and the blockchain data persistence layer. For development environments, NodeHot can also be used to set up a single node blockchain network.
+
+### Clhot / Khotd
+
+Khotd is a key manager for HOT accounts that comes with HOT.
+
+Clhot is a command-line tool which let developers interact NodeHot as well as deploy, test HOT smart contracts.
+
