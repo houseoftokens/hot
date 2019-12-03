@@ -4,7 +4,7 @@
         ignore = dirty
 [submodule "libraries/appbase"]
 	path = libraries/appbase
-	url = https://github.com/eosio/appbase
+	url = https://github.com/housetoken/appbase.git
         ignore = dirty
 [submodule "libraries/softfloat"]
 	path = libraries/softfloat
